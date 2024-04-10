@@ -62,17 +62,6 @@ curl http://host.docker.internal:11434/api/generate -d '{
   "stream": false
 }'
 ```
-> copy paste the context from the answer
-
-
-```bash
-curl http://host.docker.internal:11434/api/generate -d '{
-  "model": "gemma",
-  "prompt": "Who is his best friend?",
-  "stream": false
-}'
-```
-
 
 #### Use it with jq
 ```bash
@@ -90,9 +79,6 @@ curl http://host.docker.internal:11434/api/generate -d '{
   "prompt": "Who is James T Kirk?"
 }' 
 ```
-
-
-
 
 ## Deploy a GenAI app with Docker compose
 > from Dev Container or not
