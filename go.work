@@ -1,0 +1,10 @@
+go 1.22.1
+
+use(
+./01-make-it-so
+./02-let-s-fly
+./03-do-it
+./04-let-s-go-1
+./04-let-s-go-2
+./webapp
+)
