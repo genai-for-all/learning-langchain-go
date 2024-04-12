@@ -43,7 +43,7 @@ func main() {
 			nil,
 		),
 		prompts.NewHumanMessagePromptTemplate(
-			`Who is {{.name}}?`,
+			`[Brief] Who is {{.name}}?`,
 			[]string{"name"},
 		),
 	})
@@ -56,7 +56,9 @@ func main() {
     }
 	
 
-    fmt.Println("🤖 prompt", promptText)
+    fmt.Println("🤖 prompt:")
+	fmt.Println(promptText)
+
 
 	_, err = llms.GenerateFromSinglePrompt(ctx, llm, promptText,
 		llms.WithStreamingFunc(func(ctx context.Context, chunk []byte) error {

@@ -31,6 +31,8 @@ curl http://host.docker.internal:11434
 At the root of the project, type the following command
 ```bash
 LLM=gemma docker compose --file compose.ollama.yaml up
+# Smaller
+LLM=gemma:2b docker compose --file compose.ollama.yaml up
 ```
 > The first time, the **gemma** LLM is downloaded (it could take a moment depending your bandwidth)
 

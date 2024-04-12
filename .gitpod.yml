@@ -1,5 +1,5 @@
 #image: gitpod/workspace-full:latest
-image: k33g/genai-go-workspace:0.0.0
+image: k33g/genai-go-workspace:0.0.1
 
 ports:
   - name: Frontend

@@ -25,7 +25,11 @@ func main() {
 		ollamaURL = "http://host.docker.internal:11434"
 	}
 
-	llm, err := ollama.New(ollama.WithModel(modelName), ollama.WithServerURL(ollamaURL))
+	llm, err := ollama.New(
+		ollama.WithModel(modelName), 
+		ollama.WithServerURL(ollamaURL),
+		//ollama.WithVerbose(true),
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,8 +38,12 @@ func main() {
 		llms.TextContent{Text: "You are a Star Trek expert."},
 	}
 
+	// ✋ with gemma:2b the LLM cannot answer,
+	// with gemma the LLM can answer
 	firstQuestionParts := []llms.ContentPart{
 		llms.TextContent{Text: "Who is James T Kirk?"},
+		//llms.TextContent{Text: "Who is Jonathan Archer?"},
+
 	}
 
 	content := []llms.MessageContent{
@@ -77,7 +85,12 @@ func main() {
 		},
 	)
 
-	fmt.Println("📝", content)
+	fmt.Println("📝 content:", )
+
+	for idx, item := range content { // item is llms.MessageContent
+		fmt.Println(" -",idx,  item)
+	}
+
 	fmt.Println("🙂:", content[len(content)-1].Parts[0])
 	fmt.Println("🤖:")
 
@@ -88,5 +101,7 @@ func main() {
 		}))
 
 	fmt.Println("")
+
+	
 
 }
