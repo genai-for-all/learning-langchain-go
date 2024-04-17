@@ -6,6 +6,13 @@ use(
 ./03-do-it
 ./04-let-s-go-1
 ./04-let-s-go-2
-./04-let-s-go-3
 ./webapp
+./webapp.next
+./experiments/01-go
+./experiments/02-go
+./experiments/03-go
+./05-chat-history
+./06-the-art-of-the-prompt
+./07-agents
+./08-functions
 )

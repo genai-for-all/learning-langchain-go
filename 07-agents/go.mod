@@ -1,4 +1,4 @@
-module 04-let-s-go-3
+module 07-agents
 
 go 1.22.1
 

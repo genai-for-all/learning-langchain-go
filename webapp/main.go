@@ -4,6 +4,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"log"
 	"net/http"
 	"os"
@@ -43,6 +44,13 @@ func main() {
 	fileServerHtml := http.FileServer(http.Dir("public"))
 	mux.Handle("/", fileServerHtml)
 
+	var abort = false
+
+	mux.HandleFunc("/cancel-request", func(response http.ResponseWriter, request *http.Request) {
+		abort = true
+		response.Write([]byte("😡 ABORTED"))
+	})
+
 	mux.HandleFunc("/prompt", func(response http.ResponseWriter, request *http.Request) {
 		
 		// add a flusher
@@ -70,13 +78,21 @@ func main() {
 		
 		_, err = llms.GenerateFromSinglePrompt(ctx, llm, question,
 			llms.WithStreamingFunc(func(ctx context.Context, chunk []byte) error {
-				log.Println("📝", string(chunk))
-				response.Write(chunk)
-				flusher.Flush()
-				return nil
+				if !abort {
+					log.Println("📝", string(chunk))
+					response.Write(chunk)
+					flusher.Flush()
+					return nil
+				}
+				abort = false
+				return errors.New("aborted")
+
 			}))
 		if err != nil {
-			log.Fatal(err)
+			//log.Fatal(err)
+			log.Println("😡", err)
+			response.Write([]byte("😡 Error: "+err.Error()))
+
 		}
 
 	})

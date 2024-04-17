@@ -1,5 +1,5 @@
 {
-    "image":"k33g/genai-go-workspace:0.0.1",
+    "image":"k33g/genai-go-workspace:0.0.3",
     "mounts": [
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
     ],
@@ -7,8 +7,13 @@
         "vscode": {
             "extensions": [
                 "golang.go",
-                "pomdtr.excalidraw-editor"
+                "pomdtr.excalidraw-editor",
+                "Codeium.codeium",
+                "Tobermory.es6-string-html"
             ]
         }
+    },
+    "remoteEnv": {
+        "OLLAMA_BASE_URL": "http://host.docker.internal:11434",
     }
 }
