@@ -17,7 +17,8 @@ LLM=tinydolphin go run main.go
 LLM=tinyllama go run main.go
 LLM=gemma go run main.go
 
-LLM=deepseek-coder:instruct
+curl http://host.docker.internal:11434/api/pull -d '{"name": "deepseek-coder:instruct"}'
+LLM=deepseek-coder:instruct go run main.go
 */
 func main() {
 
@@ -101,8 +102,8 @@ func main() {
 
 	msgs = append(msgs, llms.TextParts(
 		schema.ChatMessageTypeHuman,
-		"Please, add 18 and 24",
-		//"Hey, say hello to Bob Morane",
+		//"Please, add 18 and 24",
+		"Hey, say hello to Bob Morane",
 		//"Hey, say hello to Bob",
 	))
 	// it does not work with `Bob Morane`

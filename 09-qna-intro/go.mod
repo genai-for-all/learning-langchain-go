@@ -1,4 +1,4 @@
-module 07-agents
+module 09-qna-intro
 
 go 1.22.1
 

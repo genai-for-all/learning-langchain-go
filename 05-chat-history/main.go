@@ -86,7 +86,11 @@ func main() {
 			nil,
 		),
 		// Insert history
-		prompts.NewGenericMessagePromptTemplate("history", "{{range .historyMessages}}{{.GetContent}}\n{{end}}", []string{"history"}),
+		prompts.NewGenericMessagePromptTemplate(
+			"history", 
+			"{{range .historyMessages}}{{.GetContent}}\n{{end}}", 
+			[]string{"history"},
+		),
 		prompts.NewHumanMessagePromptTemplate(
 			`[Brief] {{.question}}`,
 			[]string{"question"},

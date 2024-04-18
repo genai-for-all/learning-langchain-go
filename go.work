@@ -13,6 +13,9 @@ use(
 ./experiments/03-go
 ./05-chat-history
 ./06-the-art-of-the-prompt
-./07-agents
+./07-settings
 ./08-functions
+./09-qna-intro
+./10-qna
+./11-summary
 )
