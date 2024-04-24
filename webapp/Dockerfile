@@ -1,4 +1,4 @@
-FROM golang:1.22.1-alpine as builder
+FROM golang:1.22.1-alpine as buildernext
 WORKDIR /app
 COPY main.go .
 COPY go.mod .
@@ -8,5 +8,5 @@ RUN go build
 FROM scratch
 WORKDIR /app
 COPY public ./public
-COPY --from=builder /app/genai-app .
-CMD ["./genai-app"]
+COPY --from=buildernext /app/genai-app-next .
+CMD ["./genai-app-next"]

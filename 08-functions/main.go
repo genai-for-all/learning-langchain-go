@@ -144,6 +144,7 @@ func main() {
 	default:
 		fmt.Println("😢", "tool not found:", toolName)
 	}
+	fmt.Println("🤖:", "\n", systemMessageStr)
 
 }
 

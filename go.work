@@ -7,7 +7,6 @@ use(
 ./04-let-s-go-1
 ./04-let-s-go-2
 ./webapp
-./webapp.next
 ./experiments/01-go
 ./experiments/02-go
 ./experiments/03-go
