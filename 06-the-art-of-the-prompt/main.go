@@ -21,7 +21,7 @@ LLM=gemma go run main.go
 LLM=deepseek-coder:instruct
 LLM=deepseek-coder go run main.go
 
-LLM=phi3 go run main.go
+OLLAMA_BASE_URL=http://localhost:11434 LLM=phi3 go run main.go
 */
 func main() {
 

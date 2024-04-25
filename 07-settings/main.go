@@ -56,15 +56,15 @@ func main() {
 	})
 
 	promptText, _ := prompt.Format(map[string]any{
-		"question": `write a simple hello world program in rustlang`,
+		"question": `write a simple hello world program in golang`,
 	})
 
 	fmt.Println("🤖 prompt 1", promptText)
 	fmt.Println("📝 answer:")
 
 	_, _ = llms.GenerateFromSinglePrompt(ctx, llm, promptText,
-		//llms.WithTemperature(0.5),
-		//llms.WithStopWords([]string{"console"}),
+		llms.WithTemperature(0.0),
+		//llms.WithStopWords([]string{"cargo"}),
 		llms.WithStreamingFunc(func(ctx context.Context, chunk []byte) error {
 			fmt.Print(string(chunk))
 

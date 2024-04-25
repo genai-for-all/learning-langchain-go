@@ -9,7 +9,8 @@
                 "golang.go",
                 "pomdtr.excalidraw-editor",
                 "Codeium.codeium",
-                "Tobermory.es6-string-html"
+                "Tobermory.es6-string-html",
+                "marp-team.marp-vscode"
             ]
         }
     },

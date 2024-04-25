@@ -3,7 +3,7 @@
 ## Like a guardrail
 ```
 ollama.WithPredictRepeatLastN(30)
-LLM=deepseek-coder go run main.go
+OLLAMA_BASE_URL=http://localhost:11434 LLM=deepseek-coder go run main.go
 ```
 
 > default
