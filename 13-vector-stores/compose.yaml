@@ -1,0 +1,10 @@
+services:
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest
+    volumes:
+      - chromadata:/chroma/.chroma/index
+    ports:
+      - 7777:8000
+
+volumes:
+  chromadata:

@@ -17,7 +17,7 @@ services:
       ollama:
         condition: service_started
 
-  # HTTP_PORT=8888 LLM=llama3 OLLAMA_BASE_URL=http://host.docker.internal:11434 docker compose --profile webapp up
+  # HTTP_PORT=9999 LLM=deepseek-coder:instruct OLLAMA_BASE_URL=http://host.docker.internal:11434 docker compose --profile webapp up
   web-app:
     profiles: [container, webapp]
     build:

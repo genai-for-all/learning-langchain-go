@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Docker GenAI stack</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="stylesheet" href="./css/bulma.min.css">
+    <script src="./js/markdown-it.min.js"></script>
+
+</head>
+
+  <body class="is-family-primary">
+    <div id="application"></div>
+
+    <script type="module">
+      import { html, render, Component } from '../js/preact-htm.js'
+      import App from './components/App.js'
+      render(html`<${App}/>`, document.getElementById("application"))
+    </script>
+    
+  </body>
+
+</html>

@@ -7,6 +7,8 @@ use(
 ./04-let-s-go-1
 ./04-let-s-go-2
 ./webapp
+./chronicles-of-aethelgard/webapp
+./chronicles-of-aethelgard/loader
 ./experiments/01-go
 ./experiments/02-go
 ./experiments/03-go
@@ -17,4 +19,10 @@ use(
 ./09-qna-intro
 ./10-qna
 ./11-summary
+./12-vector-stores/loader
+./12-vector-stores/vectors
+./12-vector-stores/completion
+./13-vector-stores/completion
+./13-vector-stores/loader
+./little-teacher/webapp
 )

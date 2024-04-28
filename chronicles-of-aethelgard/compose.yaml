@@ -1,0 +1,79 @@
+services:
+
+  ollama:
+    profiles: [container]
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-data:/root/.ollama
+    ports:
+      - 11434:11434
+
+  download-llm:
+    profiles: [container]
+    #image: curlimages/curl:8.6.0 this image does not work on Gitpod
+    image: rancher/curlimages-curl:7.73.0
+    entrypoint: ["curl", "ollama:11434/api/pull", "-d", "{\"name\": \"${LLM}\"}"]
+    depends_on:
+      ollama:
+        condition: service_started
+
+  # HTTP_PORT=8888 LLM=gemma OLLAMA_BASE_URL=http://host.docker.internal:11434 docker compose --profile webapp up
+  # HTTP_PORT=8888 LLM=gemma OLLAMA_BASE_URL=http://host.docker.internal:11434 docker compose --profile webapp up --build
+  web-app:
+    profiles: [container, webapp]
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    environment:
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - LLM=${LLM}
+      - HTTP_PORT=${HTTP_PORT}
+      # host.docker.internal: listening the host from the container
+    #volumes:
+    #  - ./:/app
+    #  - type: bind
+    #    source: /var/run/docker.sock
+    #    target: /var/run/docker.sock
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+    depends_on:
+      chroma-db:
+        condition: service_healthy
+    develop:
+      watch:
+        - action: sync
+          path: ./webapp/public
+          target: /app/public
+        - action: rebuild
+          path: ./webapp/main.go
+
+  chroma-db:
+    profiles: [container, webapp]
+    image: chromadb/chroma:latest
+    #volumes:
+    #  - chroma-data:/chroma/.chroma/index
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://chroma-db:8000/api/v1/heartbeat"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
+  docs-loader:
+    profiles: [container, webapp]
+    build:
+      context: ./loader
+      dockerfile: Dockerfile
+    environment:
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - LLM=${LLM}
+      - MD_FILE_PATH=${MD_FILE_PATH}
+    depends_on:
+      chroma-db:
+        condition: service_healthy
+
+volumes:
+  ollama-data:
+  #chroma-data:
+
