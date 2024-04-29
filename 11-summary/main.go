@@ -28,7 +28,7 @@ func main() {
 
 	modelName := os.Getenv("LLM")
 	if modelName == "" {
-		modelName = "tinyllama"
+		modelName = "tinyllama" // better result with gemma (several choices), but tinyllama is faster, phi3 is not good for this
 	}
 
 	ollamaURL := os.Getenv("OLLAMA_BASE_URL")
