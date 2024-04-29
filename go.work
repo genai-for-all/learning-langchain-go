@@ -6,7 +6,6 @@ use(
 ./03-do-it
 ./04-let-s-go-1
 ./04-let-s-go-2
-./webapp
 ./chronicles-of-aethelgard/webapp
 ./chronicles-of-aethelgard/loader
 ./experiments/01-go

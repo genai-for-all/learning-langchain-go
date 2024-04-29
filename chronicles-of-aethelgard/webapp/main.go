@@ -174,7 +174,8 @@ func main() {
 		answer := ""
 		_, err = chains.Call(
 			context.Background(),
-			chain, map[string]any{
+			chain, 
+			map[string]any{
 				"input_documents": docs, // link to context
 				"question":        question,
 			},
